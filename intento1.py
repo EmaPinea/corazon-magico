@@ -56,4 +56,4 @@ fig.update_layout(
 # Mostrar en Streamlit
 st.plotly_chart(fig, use_container_width=True)
 
-st.markdown(f"<p style='text-align: center; color: gray;'>Tu nombre brilla en cada rincon de mi corazon</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: center; color: gray;'>Creado por Emanuel Jacome</p>", unsafe_allow_html=True)
