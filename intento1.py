@@ -17,7 +17,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.title("     💖     ")
-st.write("Tu nombre forma la estructura en 3D, asi q porq no lo giras")
+st.write("Vamoooos escribe tu nombreeee y tambien porq no lo giras")
 
 # --- Barra Lateral ---
 st.sidebar.header("🎨 Personaliza")
@@ -66,6 +66,7 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 
 
 
