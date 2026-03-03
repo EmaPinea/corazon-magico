@@ -16,8 +16,8 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("💖 Nube de Palabras Volumétrica 💖")
-st.write("Tu nombre forma la estructura en 3D. ¡Gíralo!")
+st.title("     💖     ")
+st.write("Tu nombre forma la estructura en 3D, asi q porq no lo giras")
 
 # --- Barra Lateral ---
 st.sidebar.header("🎨 Personaliza")
@@ -66,3 +66,4 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
