@@ -3,39 +3,43 @@ import numpy as np
 import plotly.graph_objects as go
 
 # --- Configuración de la Página ---
-st.set_page_config(page_title="Corazón de Palabras 3D", page_icon="💖", layout="wide")
+st.set_page_config(page_title="Corazón Elegante 3D", page_icon="💖", layout="wide")
 
-# Estilo visual
+# Estilo visual oscuro
 st.markdown("""
     <style>
-    .stApp { background-color: #050505; }
-    h1 { color: #FF0055; text-align: center; text-shadow: 0 0 20px #FF0055; }
-    p { color: #cccccc; text-align: center; }
+    .stApp { background-color: #020202; }
+    h1 { color: #FF0055; text-align: center; font-family: 'Dancing Script', cursive; text-shadow: 0 0 15px #FF0055; }
+    p { color: #aaaaaa; text-align: center; }
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
 
-st.title("     💖     ")
-st.write("Tu nombre forma la estructura en 3D, asi q porq no lo giras")
+st.title("💖 Silueta 3D de Palabras 💖")
+st.write("Una forma más elegante construida con tu nombre. ¡Gíralo!")
 
 # --- Barra Lateral ---
 st.sidebar.header("🎨 Personaliza")
 nombre = st.sidebar.text_input("Nombre:", "Emanuelle")
-color = st.sidebar.color_picker("Color:", "#FF0055")
-densidad = st.sidebar.slider("Densidad:", 500, 3000, 1500, step=100)
-tamano = st.sidebar.slider("Tamaño:", 8, 20, 12)
+color = st.sidebar.color_picker("Color Neón:", "#FF0055")
+# Ajusté la densidad para esta nueva forma
+densidad = st.sidebar.slider("Densidad de palabras:", 30, 100, 60)
+tamano = st.sidebar.slider("Tamaño del texto:", 6, 18, 10)
 
-# --- Matemáticas 3D ---
-u = np.linspace(0, np.pi, int(np.sqrt(densidad)))
-v = np.linspace(0, 2 * np.pi, int(np.sqrt(densidad)))
+# --- NUEVA MATEMÁTICA 3D (Forma más elegante) ---
+# Usamos una parametrización diferente para una "cáscara" de corazón
+u = np.linspace(0, 2 * np.pi, densidad)
+v = np.linspace(0, np.pi, densidad)
 u, v = np.meshgrid(u, v)
 u = u.flatten()
 v = v.flatten()
 
-x = 16 * np.sin(u)**3 * np.cos(v)
-y = 16 * np.sin(u)**3 * np.sin(v)
-z = 13 * np.cos(u) - 5 * np.cos(2*u) - 2 * np.cos(3*u) - np.cos(4*u)
+# Fórmulas nuevas para una silueta más definida
+x = 16 * np.sin(u)**3 * np.sin(v)**2
+y = (13 * np.cos(u) - 5 * np.cos(2*u) - 2 * np.cos(3*u) - np.cos(4*u)) * np.sin(v)**2
+# El factor 'z' aquí controla el grosor, lo hacemos más delgado
+z = 6 * np.cos(v) * np.sin(u) 
 
 # --- Gráfico ---
 fig = go.Figure()
@@ -48,17 +52,17 @@ fig.add_trace(go.Scatter3d(
     hoverinfo='none'
 ))
 
-# Configuración limpia (Aquí estaba el error, ya corregido con 'visible=False')
+# Configuración limpia (SIN ERRORES)
 axis_args = dict(showbackground=False, showgrid=False, showticklabels=False, visible=False, zeroline=False)
 
 fig.update_layout(
-    dragmode='orbit', 
+    dragmode='orbit', # Rotación orbital suave
     scene=dict(
         xaxis=axis_args,
         yaxis=axis_args,
         zaxis=axis_args,
         bgcolor='rgba(0,0,0,0)',
-        camera=dict(eye=dict(x=1.8, y=1.8, z=1.2))
+        camera=dict(eye=dict(x=0, y=-2, z=0.5)) # Cámara frontal para ver la forma mejor
     ),
     paper_bgcolor='rgba(0,0,0,0)',
     margin=dict(l=0, r=0, t=0, b=0),
@@ -66,4 +70,3 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
-
