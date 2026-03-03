@@ -12,7 +12,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("✨ Para ti con mucho Cariño")
+st.title("✨ Holaaa")
 
 # Barra lateral para el nombre y color
 nombre_input = st.sidebar.text_input("Ingresa el Nombre:", "Emanuel")
