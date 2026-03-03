@@ -21,7 +21,7 @@ st.write("Tu nombre forma la estructura en 3D, asi q porq no lo giras")
 
 # --- Barra Lateral ---
 st.sidebar.header("🎨 Personaliza")
-nombre = st.sidebar.text_input("Nombre:", "Emanuelle")
+nombre = st.sidebar.text_input("Nombre:", "ESCRIBE UN NOMBRE")
 color = st.sidebar.color_picker("Color:", "#FF0055")
 densidad = st.sidebar.slider("Densidad:", 500, 3000, 1500, step=100)
 tamano = st.sidebar.slider("Tamaño:", 8, 20, 12)
@@ -66,5 +66,6 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
 
 
